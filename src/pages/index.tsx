@@ -1,3 +1,5 @@
+import Todo from 'components/Todo'
+
 export default function Home() {
-  return <div>Hello World</div>
+  return <Todo />
 }
