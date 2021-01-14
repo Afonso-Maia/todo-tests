@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
 import TodoItem from 'components/TodoItem'
+import EditInput from 'components/EditInput'
 
 import * as S from './styles'
 
@@ -87,6 +88,7 @@ const Todo = () => {
               key={todo.id}
               id={todo.id}
               task={todo.task}
+              complete={todo.complete}
               toggleEditMode={toggleEditMode}
               deleteTodo={deleteTodo}
               toggleTodoComplete={toggleTodoComplete}
@@ -98,33 +100,29 @@ const Todo = () => {
   )
 }
 
-const EditInput = ({ todo, cancelEdit, saveEditedTodo }) => {
-  const { register, handleSubmit } = useForm()
-  const { task, id } = todo
+// const EditInput = ({ todo, cancelEdit, saveEditedTodo }) => {
+//   const { register, handleSubmit } = useForm()
+//   const { task, id } = todo
 
-  // const onSubmit = newTodo => todoList.map(todo => {
-  //   return todo.id === newTodo.id ? newTodo : todo
-  // })
+//   const onSubmit = (data) => saveEditedTodo(id, data['todo-edit'])
 
-  const onSubmit = (data) => saveEditedTodo(id, data['todo-edit'])
+//   const handleCancel = (e) => {
+//     e.stopPropagation()
+//     cancelEdit(id)
+//   }
 
-  const handleCancel = (e) => {
-    e.stopPropagation()
-    cancelEdit(id)
-  }
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        type="text"
-        name="todo-edit"
-        id="todo-edit"
-        ref={register}
-        defaultValue={task}
-      />
-      <input type="submit" value="save" />
-      <input type="button" value="cancel" onClick={handleCancel} />
-    </form>
-  )
-}
+//   return (
+//     <form onSubmit={handleSubmit(onSubmit)}>
+//       <input
+//         type="text"
+//         name="todo-edit"
+//         id="todo-edit"
+//         ref={register}
+//         defaultValue={task}
+//       />
+//       <input type="submit" value="save" />
+//       <input type="button" value="cancel" onClick={handleCancel} />
+//     </form>
+//   )
+// }
 export default Todo

@@ -3,6 +3,7 @@ import * as S from './styles'
 const TodoItem = ({
   id,
   task,
+  complete,
   toggleTodoComplete,
   toggleEditMode,
   deleteTodo
@@ -23,7 +24,7 @@ const TodoItem = ({
   }
 
   return (
-    <S.Wrapper id={id} onClick={handleToggle}>
+    <S.Wrapper id={id} onClick={handleToggle} complete={complete}>
       <span>{task}</span>
       <button onClick={handleEdit}>edit</button>
       <button onClick={handleDelete}>delete</button>

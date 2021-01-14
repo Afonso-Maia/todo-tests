@@ -1,3 +1,13 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const Wrapper = styled.div``
+type liProps = {
+  complete: boolean
+}
+
+export const Wrapper = styled.li<liProps>`
+  ${({ complete }) =>
+    complete === true &&
+    css`
+      text-decoration: line-through;
+    `}
+`
